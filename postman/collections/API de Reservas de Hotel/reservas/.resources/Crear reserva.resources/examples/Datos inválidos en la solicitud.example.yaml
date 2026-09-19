@@ -1,0 +1,23 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/reservas"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "nombreCliente": "Josué Quezada",
+        "habitacion": "string",
+        "fechaEntrada": "2026-10-01",
+        "fechaSalida": "2026-10-05",
+        "estado": "CONFIRMADA"
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  body:
+    type: text
+    content: ""
+order: 2000

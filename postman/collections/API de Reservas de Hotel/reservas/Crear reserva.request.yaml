@@ -1,0 +1,60 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/reservas"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombreCliente": "Josué Quezada",
+      "habitacion": "string",
+      "fechaEntrada": "2026-10-01",
+      "fechaSalida": "2026-10-05",
+      "estado": "CONFIRMADA"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "nombreCliente": {
+          "type": "string",
+          "example": "Josué Quezada"
+        },
+        "habitacion": {
+          "type": "string",
+          "example": 305
+        },
+        "fechaEntrada": {
+          "type": "string",
+          "example": "2026-10-01",
+          "format": "date"
+        },
+        "fechaSalida": {
+          "type": "string",
+          "example": "2026-10-05",
+          "format": "date"
+        },
+        "estado": {
+          "type": "string",
+          "enum": [
+            "CONFIRMADA",
+            "PENDIENTE",
+            "CANCELADA"
+          ],
+          "example": "CONFIRMADA"
+        }
+      },
+      "required": [
+        "nombreCliente",
+        "habitacion",
+        "fechaEntrada",
+        "fechaSalida",
+        "estado"
+      ]
+    }
+settings: {}
+examples: ./.resources/Crear reserva.resources/examples
+order: 1000

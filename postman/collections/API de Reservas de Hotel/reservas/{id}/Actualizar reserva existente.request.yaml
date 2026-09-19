@@ -1,0 +1,78 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/reservas/:id"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "8251"
+    disabled: false
+    description: ""
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "nombreCliente": "Josué Quezada",
+      "habitacion": "string",
+      "fechaEntrada": "2026-10-01",
+      "fechaSalida": "2026-10-05",
+      "estado": "CONFIRMADA"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "nombreCliente": {
+          "type": "string",
+          "example": "Josué Quezada"
+        },
+        "habitacion": {
+          "type": "string",
+          "example": 305
+        },
+        "fechaEntrada": {
+          "type": "string",
+          "example": "2026-10-01",
+          "format": "date"
+        },
+        "fechaSalida": {
+          "type": "string",
+          "example": "2026-10-05",
+          "format": "date"
+        },
+        "estado": {
+          "type": "string",
+          "enum": [
+            "CONFIRMADA",
+            "PENDIENTE",
+            "CANCELADA"
+          ],
+          "example": "CONFIRMADA"
+        }
+      },
+      "required": [
+        "nombreCliente",
+        "habitacion",
+        "fechaEntrada",
+        "fechaSalida",
+        "estado"
+      ]
+    }
+settings: {}
+examples: ./.resources/Actualizar reserva existente.resources/examples
+order: 2000

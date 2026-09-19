@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/cursos/:id"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    id: "6547"
+  body:
+    type: json
+    content: |-
+      {
+        "nombre": "Programación II",
+        "codigo": "PROG-201",
+        "creditos": 5,
+        "estado": "ACTIVO"
+      }
+response:
+  statusCode: 404
+  statusText: Not Found
+  body:
+    type: text
+    content: ""
+order: 2000

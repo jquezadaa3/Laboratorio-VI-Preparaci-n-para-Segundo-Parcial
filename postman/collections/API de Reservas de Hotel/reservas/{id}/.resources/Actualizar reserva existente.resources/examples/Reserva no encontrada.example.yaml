@@ -1,0 +1,25 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/reservas/:id"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    id: "8251"
+  body:
+    type: json
+    content: |-
+      {
+        "nombreCliente": "Josué Quezada",
+        "habitacion": "string",
+        "fechaEntrada": "2026-10-01",
+        "fechaSalida": "2026-10-05",
+        "estado": "CONFIRMADA"
+      }
+response:
+  statusCode: 404
+  statusText: Not Found
+  body:
+    type: text
+    content: ""
+order: 2000

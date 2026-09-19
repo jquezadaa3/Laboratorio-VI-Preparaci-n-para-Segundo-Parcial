@@ -1,0 +1,58 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/libros"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "titulo": "Cien años de soledad",
+      "autor": "Gabriel García Márquez",
+      "isbn": "978-0307474728",
+      "anioPublicacion": 1967,
+      "estado": "DISPONIBLE"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "example": "Cien años de soledad"
+        },
+        "autor": {
+          "type": "string",
+          "example": "Gabriel García Márquez"
+        },
+        "isbn": {
+          "type": "string",
+          "example": "978-0307474728"
+        },
+        "anioPublicacion": {
+          "type": "integer",
+          "example": 1967
+        },
+        "estado": {
+          "type": "string",
+          "enum": [
+            "DISPONIBLE",
+            "PRESTADO",
+            "EN_REPARACION"
+          ],
+          "example": "DISPONIBLE"
+        }
+      },
+      "required": [
+        "titulo",
+        "autor",
+        "isbn",
+        "anioPublicacion",
+        "estado"
+      ]
+    }
+settings: {}
+examples: ./.resources/Registrar un nuevo libro.resources/examples
+order: 1000

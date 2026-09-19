@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: API de Reservas de Hotel
+  description: API para administrar reservas de un hotel - Laboratorio VI, Ejercicio 3
+  version: 1.0.0
+servers:
+  - url: http://localhost:8083/api
+
+paths:
+  /reservas:
+    post:
+      summary: Crear reserva
+      operationId: crearReserva
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReservaRequest'
+      responses:
+        '201':
+          description: Reserva creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservaResponse'
+        '400':
+          description: Datos inválidos en la solicitud
+    get:
+      summary: Consultar todas las reservas
+      operationId: consultarReservas
+      responses:
+        '200':
+          description: Lista de reservas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservaResponse'
+
+  /reservas/{id}:
+    get:
+      summary: Consultar reserva por id
+      operationId: consultarReservaPorId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Reserva encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservaResponse'
+        '404':
+          description: Reserva no encontrada
+    put:
+      summary: Actualizar reserva existente
+      operationId: actualizarReserva
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReservaRequest'
+      responses:
+        '200':
+          description: Reserva actualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservaResponse'
+        '404':
+          description: Reserva no encontrada
+    delete:
+      summary: Cancelar reserva
+      operationId: cancelarReserva
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Reserva cancelada exitosamente
+        '404':
+          description: Reserva no encontrada
+
+components:
+  schemas:
+    ReservaRequest:
+      type: object
+      required: [nombreCliente, habitacion, fechaEntrada, fechaSalida, estado]
+      properties:
+        nombreCliente:
+          type: string
+          example: Josué Quezada
+        habitacion:
+          type: string
+          example: 305
+        fechaEntrada:
+          type: string
+          format: date
+          example: 2026-10-01
+        fechaSalida:
+          type: string
+          format: date
+          example: 2026-10-05
+        estado:
+          type: string
+          enum: [CONFIRMADA, PENDIENTE, CANCELADA]
+          example: CONFIRMADA
+
+    ReservaResponse:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+        - $ref: '#/components/schemas/ReservaRequest'

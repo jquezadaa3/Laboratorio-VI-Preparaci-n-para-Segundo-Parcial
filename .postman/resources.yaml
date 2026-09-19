@@ -1,0 +1,11 @@
+workspace:
+  id: b8cb704e-b37a-4a1e-864d-64f6f7b24507
+localResources:
+  specs:
+    - ../LaboratorioVI/Ejercicio2/cursos-api.yaml
+    - ../LaboratorioVI/Ejercicio1/biblioteca-api.yaml
+    - ../LaboratorioVI/Ejercicio3/hotel-api.yaml
+    - ../postman/specs/API de Cursos Universitarios/cursos-api.yaml
+resourceNameMappings:
+  specs:
+    - ../postman/specs/API de Cursos Universitarios/cursos-api.yaml: API de Cursos Universitarios

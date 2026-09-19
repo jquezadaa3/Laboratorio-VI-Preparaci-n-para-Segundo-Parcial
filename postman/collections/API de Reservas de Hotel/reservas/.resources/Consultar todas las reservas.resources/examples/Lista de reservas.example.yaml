@@ -1,0 +1,93 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/reservas"
+  method: GET
+  headers:
+    Accept: application/json
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "nombreCliente": "Josué Quezada",
+          "habitacion": "string",
+          "fechaEntrada": "2026-10-01",
+          "fechaSalida": "2026-10-05",
+          "estado": "CONFIRMADA",
+          "id": 1
+        },
+        {
+          "nombreCliente": "Josué Quezada",
+          "habitacion": "string",
+          "fechaEntrada": "2026-10-01",
+          "fechaSalida": "2026-10-05",
+          "estado": "CONFIRMADA",
+          "id": 1
+        }
+      ]
+    $type: |-
+      {
+        "type": "array",
+        "items": {
+          "allOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1,
+                  "format": "int64"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nombreCliente": {
+                  "type": "string",
+                  "example": "Josué Quezada"
+                },
+                "habitacion": {
+                  "type": "string",
+                  "example": 305
+                },
+                "fechaEntrada": {
+                  "type": "string",
+                  "example": "2026-10-01",
+                  "format": "date"
+                },
+                "fechaSalida": {
+                  "type": "string",
+                  "example": "2026-10-05",
+                  "format": "date"
+                },
+                "estado": {
+                  "type": "string",
+                  "enum": [
+                    "CONFIRMADA",
+                    "PENDIENTE",
+                    "CANCELADA"
+                  ],
+                  "example": "CONFIRMADA"
+                }
+              },
+              "required": [
+                "nombreCliente",
+                "habitacion",
+                "fechaEntrada",
+                "fechaSalida",
+                "estado"
+              ]
+            }
+          ]
+        }
+      }
+order: 1000

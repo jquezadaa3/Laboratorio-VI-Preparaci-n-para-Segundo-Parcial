@@ -1,0 +1,88 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/libros/:id"
+  method: PUT
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  pathVariables:
+    id: "452"
+  body:
+    type: json
+    content: |-
+      {
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "isbn": "978-0307474728",
+        "anioPublicacion": 1967,
+        "estado": "DISPONIBLE"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "isbn": "978-0307474728",
+        "anioPublicacion": 1967,
+        "estado": "DISPONIBLE",
+        "id": 1
+      }
+    $type: |-
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1,
+                "format": "int64"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "titulo": {
+                "type": "string",
+                "example": "Cien años de soledad"
+              },
+              "autor": {
+                "type": "string",
+                "example": "Gabriel García Márquez"
+              },
+              "isbn": {
+                "type": "string",
+                "example": "978-0307474728"
+              },
+              "anioPublicacion": {
+                "type": "integer",
+                "example": 1967
+              },
+              "estado": {
+                "type": "string",
+                "enum": [
+                  "DISPONIBLE",
+                  "PRESTADO",
+                  "EN_REPARACION"
+                ],
+                "example": "DISPONIBLE"
+              }
+            },
+            "required": [
+              "titulo",
+              "autor",
+              "isbn",
+              "anioPublicacion",
+              "estado"
+            ]
+          }
+        ]
+      }
+order: 1000

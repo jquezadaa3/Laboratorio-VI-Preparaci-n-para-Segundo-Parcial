@@ -1,0 +1,51 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/cursos"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombre": "Programación II",
+      "codigo": "PROG-201",
+      "creditos": 5,
+      "estado": "ACTIVO"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string",
+          "example": "Programación II"
+        },
+        "codigo": {
+          "type": "string",
+          "example": "PROG-201"
+        },
+        "creditos": {
+          "type": "integer",
+          "example": 5
+        },
+        "estado": {
+          "type": "string",
+          "enum": [
+            "ACTIVO",
+            "INACTIVO"
+          ],
+          "example": "ACTIVO"
+        }
+      },
+      "required": [
+        "nombre",
+        "codigo",
+        "creditos",
+        "estado"
+      ]
+    }
+settings: {}
+examples: ./.resources/Crear curso.resources/examples
+order: 1000

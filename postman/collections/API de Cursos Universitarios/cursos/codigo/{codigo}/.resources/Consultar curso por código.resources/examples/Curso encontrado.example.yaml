@@ -1,0 +1,73 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/cursos/codigo/:codigo"
+  method: GET
+  headers:
+    Accept: application/json
+  pathVariables:
+    codigo: string
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "nombre": "Programación II",
+        "codigo": "PROG-201",
+        "creditos": 5,
+        "estado": "ACTIVO",
+        "id": 1
+      }
+    $type: |-
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1,
+                "format": "int64"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "nombre": {
+                "type": "string",
+                "example": "Programación II"
+              },
+              "codigo": {
+                "type": "string",
+                "example": "PROG-201"
+              },
+              "creditos": {
+                "type": "integer",
+                "example": 5
+              },
+              "estado": {
+                "type": "string",
+                "enum": [
+                  "ACTIVO",
+                  "INACTIVO"
+                ],
+                "example": "ACTIVO"
+              }
+            },
+            "required": [
+              "nombre",
+              "codigo",
+              "creditos",
+              "estado"
+            ]
+          }
+        ]
+      }
+order: 1000

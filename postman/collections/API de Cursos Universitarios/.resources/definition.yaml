@@ -1,0 +1,4 @@
+$kind: collection
+description: API para administrar cursos universitarios - Laboratorio VI, Ejercicio 2
+variables:
+  baseUrl: http://localhost:8082/api

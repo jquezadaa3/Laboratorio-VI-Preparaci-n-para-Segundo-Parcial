@@ -1,0 +1,4 @@
+$kind: collection
+description: API para administrar los libros de una biblioteca - Laboratorio VI, Ejercicio 1
+variables:
+  baseUrl: http://localhost:8081/api
